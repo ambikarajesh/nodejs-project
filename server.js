@@ -3,7 +3,7 @@ const fs = require('fs');
 const hbs = require('hbs');
 var app = express();
 const port = process.env.PORT || 3000;
-app.set('view engine', hbs);
+app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('getYear', () => {
     return new Date().getFullYear();
@@ -30,6 +30,11 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle:'About',
+    })
+})
+app.get('/projects', (req, res) => {
+    res.render('home.hbs', {
+        pageTitle:'Projects'
     })
 })
 app.listen(3000, () => {
