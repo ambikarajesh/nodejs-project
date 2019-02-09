@@ -2,7 +2,7 @@ const express = require('express');;
 const fs = require('fs');
 const hbs = require('hbs');
 var app = express();
-
+const port = process.env.PORT || 3000;
 app.set('view engine', hbs);
 hbs.registerPartials(__dirname+'/views/partials');
 hbs.registerHelper('getYear', () => {
@@ -32,4 +32,6 @@ app.get('/about', (req, res) => {
         pageTitle:'About',
     })
 })
-app.listen(3000)
+app.listen(3000, () => {
+    console.log(`server starting in port ${port}`);
+})
